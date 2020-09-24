@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>社員名:</strong>
+  <%= @payroll1.name %>
+</p>
+
+<p>
+  <strong>基本給:</strong>
+  <%= @payroll1.basic_salary.to_s(:delimited) %>円
+</p>
+
+<p>
+  <strong>総支給額:</strong>
+  <%= @payroll1.payment_amount %>
+</p>
+
+<p>
+  <strong>税(源泉徴収):</strong>
+  <%= @payroll1.tax %>
+</p>
+
+<%= link_to 'Edit', edit_payroll1_path(@payroll1) %> |
+<%= link_to 'Back', payroll1s_path %>

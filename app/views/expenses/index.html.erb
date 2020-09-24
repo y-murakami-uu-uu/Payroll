@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>経費</h1>
+
+<table>
+  <thead>
+    <tr>
+        <th>社員名</th>
+        <th>経費</th>
+        <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.payroll1_id %></td>
+        <td><%= expense.expense_amount.to_s(:delimited) %>円 </td>
+        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '経費新規登録', new_expense_path %>
+<%= link_to 'Back', payroll1s_path %>

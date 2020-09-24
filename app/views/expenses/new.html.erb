@@ -1,0 +1,26 @@
+<h1>経費登録</h1>
+
+<%= form_with(scope: :expense, url: expenses_path, local: true) do |form| %>
+  
+    <div class="field">
+      <%= form.label :payroll1_id, "社員名" %>
+      <%= form.select :payroll1_id, Payroll1.all.map{|payroll1| [payroll1.name, payroll1.id]}, :include_blank => true %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :expense_amount, "金額" %>
+      <%= form.text_area :expense_amount %>円
+    </div>
+
+    <div class="field">
+      <%= form.label :spend_day, "使用日" %>
+      <%= form.date_select :spend_day %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>
+  
+
+<%= link_to 'Back', expenses_path %>

@@ -1,0 +1,27 @@
+<%= form_with(model: payroll1, local: true) do |form| %>
+  <% if payroll1.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(payroll1.errors.count, "error") %> prohibited this payroll1 from being saved:</h2>
+
+      <ul>
+        <% payroll1.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "社員名" %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :basic_salary, "基本給" %>
+    <%= form.text_area :basic_salary %>円
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

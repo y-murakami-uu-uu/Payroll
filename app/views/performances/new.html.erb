@@ -1,0 +1,26 @@
+<h1>成果給登録</h1>
+
+<%= form_with(scope: :performance, url: performances_path, local: true) do |form| %>
+  
+    <div class="field">
+      <%= form.label :payroll1_id, "社員名" %>
+      <%= form.select :payroll1_id, Payroll1.all.map{|payroll1| [payroll1.name, payroll1.id]}, :include_blank => true %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :performance_amount, "金額" %>
+      <%= form.text_area :performance_amount %>円
+    </div>
+
+    <div class="field">
+      <%= form.label :get_day, "獲得日" %>
+      <%= form.date_select :get_day %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
+
+<%= link_to 'Back', performances_path %>

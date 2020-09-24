@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>成果給</h1>
+
+<table>
+  <thead>
+    <tr>
+        <th>社員名</th>
+        <th>成果給</th>
+        <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @performances.each do |performance| %>
+      <tr>
+        <td><%= performance.payroll1_id %></td>
+        <td><%= performance.performance_amount.to_s(:delimited) %>円 </td>
+        <td><%= link_to 'Destroy', performance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '成果給新規登録', new_performance_path %>
+<%= link_to 'Back', payroll1s_path %>

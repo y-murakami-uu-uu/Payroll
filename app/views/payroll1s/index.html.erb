@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>社員</h1>
+
+<table>
+  <thead>
+    <tr>
+        <th>社員ID</th>
+        <th>社員名</th>
+        <th>基本給</th>
+        <th>総支給</th>
+        <th>税</th>
+        <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payroll1s.each do |payroll1| %>
+      <tr>
+        <td><%= payroll1.id %></td>
+        <td><%= payroll1.name %></td>
+        <td><%= payroll1.basic_salary.to_s(:delimited) %>円 </td>
+        <% if ! payroll1.payment_amount.nil? %>
+          <td><%= payroll1.payment_amount.to_s(:delimited) %>円 </td>
+        <%else%>
+          <td>0円</td>
+        <% end %>
+        <% if ! payroll1.tax.nil? %>
+          <td><%= payroll1.tax.to_s(:delimited) %>円 </td>
+        <%else%>
+          <td>0円</td>
+        <% end %>
+        <td><%= link_to 'Show', payroll1 %></td>
+        <td><%= link_to 'Edit', edit_payroll1_path(payroll1) %></td>
+        <td><%= link_to 'Destroy', payroll1, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '社員新規登録', new_payroll1_path %>
+<%= link_to '経費', expenses_path %>
+<%= link_to '成果給', performances_path %>
