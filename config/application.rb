@@ -21,4 +21,5 @@ end
 class Application < Rails::Application
   # config/application.rbに下記をコピペ
   config.autoload_paths += Dir["#{config.root}/lib"]
+  config.eager_load_paths += Dir["#{config.root}/lib"]
 end

@@ -13,8 +13,9 @@
 #   rake "some:great:rake:task"
 # end
 #
-every 1.days :at => '4:50 pm' do
-   runner Tasks::Batch.execute
+every 1.day, at: '2:21 pm' do
+   runner "Tasks::Batch.execute"
 end
+
 
 # Learn more: http://github.com/javan/whenever
