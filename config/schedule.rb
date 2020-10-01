@@ -3,6 +3,12 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
+require File.expand_path(File.dirname(__FILE__) + "/environment")
+rails_env = ENV['RAILS_ENV'] || :development
+set :environment, rails_env
+set :output, 'log/cron.log'
+job_type :runner, "export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$(rbenv init -)\"; cd :path && RAILS_ENV=:environment bundle exec rails runner :task ：output"
+
 # Example:
 #
 # set :output, "/path/to/my/cron_log.log"
@@ -13,9 +19,9 @@
 #   rake "some:great:rake:task"
 # end
 #
-every 1.day, at: '2:21 pm' do
+#every 1.hours do
+every 1.minutes do
    runner "Tasks::Batch.execute"
 end
-
 
 # Learn more: http://github.com/javan/whenever
