@@ -23,5 +23,8 @@ job_type :runner, "export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$(rbenv init -
 every 1.minutes do
    runner "Tasks::Batch.execute"
 end
+# bundle exec whenever --update-crontab で反映
+# crontab -l で現状確認
+
 
 # Learn more: http://github.com/javan/whenever
